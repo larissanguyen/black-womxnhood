@@ -5,6 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+Author.destroy_all
+Topic.destroy_all
+Resource.destroy_all
+Comment.destroy_all
+Upvote.destroy_all
+
 a1 = Author.create(name: "James Baldwin", bio: "Author writing about black experience")
 a2 = Author.create(name: "Toni Morrison", bio: "Fiction author focused on black experience")
 a3 = Author.create(name: "Ava Duvernay", bio: "Black female director exploring black experience")
