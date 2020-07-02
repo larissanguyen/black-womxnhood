@@ -1,1 +1,28 @@
-<h1>Cool Beans</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+    
+        <h1>User Signup Form</h1>
+        
+        <div>
+            <%= form_with url: "/signup", method: 
+            "post" do |f| %>
+                <%= f.label :name %>
+                <%= f.text_field :name %>
+                <br>
+                <%= f.label :bio %>
+                <%= f.text_area :bio %>
+                <br>
+                <%= f.label :password %>
+                <%= f.password_field :password %>
+                <br>
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation %>
+                <br>
+                <%= f.submit "Create Account"%>
+            <% end %>
+        </div>
+    </body>
+</html>
