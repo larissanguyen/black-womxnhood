@@ -1,55 +1,48 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    </head>
-    <body>
-        <h1>Welcome Back To Real Talk, <%= @user.name %>!</h1>
-        <div>
-            <%= link_to "Edit Profile", edit_user_path(@user) %>
-            <%= link_to "Explore Resources", resources_path %>
-            <%= link_to "Explore Topics", topics_path %>
-        </div>
-        
-        <div>
-            <div>Your Profile</div>
-            <div>
-                Name: <%= @user.name %>
-                <% if @user.bio %>
-                    <p>Bio: <%= @user.bio %></p>
-                <% end %>
-            </div>
-        </div>
-        
-        <div>
-            <div>Your Favorite Topics</div>
-            <div>
-                <ul>
-                <% @fav_topics.each do |topic| %>
-                    <li>
-                        <%= link_to topic.name, topic_path(topic) %>
-                    </li>
-                <% end %>
-                </ul>
-            </div>
-        </div>
-        
-        <div>
-            <div>Your Resources</div>
-            <div>
-                <ul>
-                <% @resources.each do |resource| %>
-                    <li>
-                        <%= link_to resource.title, resource_path(resource) %> <i>by <%= resource.author.name %></i>
-                    </li>
-                <% end %>
-                </ul>
-            </div>
-        </div>
-        
-        <div>
-            <%= form_with model: @user, method: :delete do |f| %>
-                <%= f.submit "Delete Account" %>
+<h1>Welcome Back To Real Talk, <%= @user.name %>!</h1>
+<div>
+    <%= link_to "Edit Profile", edit_user_path(@user) %>
+    <%= link_to "Explore Resources", resources_path %>
+    <%= link_to "Explore Topics", topics_path %>
+</div>
+
+<div>
+    <div>Your Profile</div>
+    <div>
+        Name: <%= @user.name %>
+        <% if @user.bio %>
+        <p>Bio: <%= @user.bio %></p>
+        <% end %>
+    </div>
+</div>
+
+<div>
+    <div>Your Favorite Topics</div>
+    <div>
+        <ul>
+            <% @fav_topics.each do |topic| %>
+            <li>
+                <%= link_to topic.name, topic_path(topic) %>
+            </li>
             <% end %>
-        </div>
-    </body>
-</html>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <div>Your Resources</div>
+    <div>
+        <ul>
+            <% @resources.each do |resource| %>
+            <li>
+                <%= link_to resource.title, resource_path(resource) %> <i>by <%= resource.author.name %></i>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <%= form_with model: @user, method: :delete do |f| %>
+    <%= f.submit "Delete Account" %>
+    <% end %>
+</div>
