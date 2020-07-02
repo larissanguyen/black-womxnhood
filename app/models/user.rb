@@ -6,6 +6,14 @@ class User < ApplicationRecord
 
 	# has_secure_password
 	
+	def add_comment(resource, content)
+		Comment.create(resource: resource, user: self, content: content)
+	end
+	
+	def upvote(resource)
+		Upvote.create(user: self, resource: resource)
+	end
+	
 	# topics for which user has interacted with most resources
 	def fav_topics(number= 5)
 		sorted_topics_by_user_resources.take(number)
