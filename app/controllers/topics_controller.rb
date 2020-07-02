@@ -2,6 +2,7 @@ class TopicsController < ApplicationController
 	before_action :current_topic, only [:show]
 
 	def index
+		@topics = Topic.all
 	end
 
 	def show
