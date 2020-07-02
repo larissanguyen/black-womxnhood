@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # before_action :current_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticated, only: [:new, :create, :show]
+  skip_before_action :authenticated, only: [:new, :create, :show, :destroy]
   
   def new
     @user = User.new
@@ -32,7 +32,9 @@ class UsersController < ApplicationController
   end
   
   def destroy
-  
+    test_user
+    @user.delete
+    redirect_to "/signup"
   end
 
   private
