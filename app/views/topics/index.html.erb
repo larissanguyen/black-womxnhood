@@ -1,0 +1,15 @@
+<h1>Topics</h1>
+
+<ul>
+	<% @topics.each do |topic| %>
+		<h3>
+			<%= link_to topic.name, "/topics/#{topic.id}" %> 
+		</h3>
+		
+		<% topic.resources.each do |resource| %>
+		<li> <%= link_to resource.title, "/resources/#{resource.id}" %> by 
+			 <%= resource.author.name %>
+		</li>
+		<% end %>
+	<% end %>
+</ul>

@@ -1,12 +1,13 @@
 class ResourcesController < ApplicationController
 	before_action :current_resource, only: [:show]
+	skip_before_action  :authenticated
 
 	def index
 		@resources = Resource.all
 	end
 
 	def show
-		@resource = Resource.find(session[:user_id])
+		# @resource = Resource.find(session[:user_id])
 	end
 
 	def new

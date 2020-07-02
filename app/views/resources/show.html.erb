@@ -1,9 +1,9 @@
-<h1><% @resource.title%></h1>
+<h1><%= @resource.title%></h1>
 
-<% link_to @resource.author.name, author_path(@resource.author) %>
-
+Author: <%= link_to @resource.author.name, author_path(@resource.author) %>
+<br/>
 
 Topics:
 <% @resource.topics.each do |topic|%>
-	<% link_to topic.name, topic_path(topic) %>  
+	<%= link_to topic.name, topic_path(topic) %>  
 <% end %>

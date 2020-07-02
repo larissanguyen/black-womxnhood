@@ -2,9 +2,11 @@
 
 <ul>
 	<% @resources.each do |resource| %>
-		<li> <% link_to resource.title, "/resources/#{resource.id}" %> 
-			 <% resource.author.name %>
-			 <% resource.topics.first.name %>
+		<li> <%= link_to resource.title, "/resources/#{resource.id}" %> by 
+			 <%= resource.author.name %>
+			 <% resource.topics.each do |topic| %>
+			 	<%= topic.name %>
+			 <% end %>
 		 </li>
 	<% end %>
 </ul>
