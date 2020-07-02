@@ -1,0 +1,10 @@
+<h1>All Resources</h1>
+
+<ul>
+	<% @resources.each do |resource| %>
+		<li> <% link_to resource.title, "/resources/#{resource.id}" %> 
+			 <% resource.author.name %>
+			 <% resource.topics.first.name %>
+		 </li>
+	<% end %>
+</ul>
