@@ -1,9 +1,32 @@
-<h1><% @resource.title%></h1>
+<div>
+	<h1><%= @resource.title%> </h1> 
 
-<% link_to @resource.author.name, author_path(@resource.author) %>
+	<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	  <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-10.646.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+	</svg>
+	<%= @resource.num_upvotes %>
+</div>
 
 
-Topics:
-<% @resource.topics.each do |topic|%>
-	<% link_to topic.name, topic_path(topic) %>  
-<% end %>
+<div>
+	<br/>
+	Author: <%= link_to @resource.author.name, author_path(@resource.author) %>
+	<br/>
+
+	Topics:
+	<% @resource.topics.each do |topic|%>
+		<%= link_to topic.name, topic_path(topic) %>  
+	<% end %>	
+</div>
+
+
+<div>
+	<h3>Comments: </h3>
+	<% @resource.comments.each do |comment| %>
+		<h5> <%= comment.user.name %> | <%= comment.updated_at %> </h5> 
+		<p> <%= comment.content %></p>
+	<% end %>	
+</div>
+
+
+

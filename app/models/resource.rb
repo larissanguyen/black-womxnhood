@@ -16,6 +16,10 @@ class Resource < ApplicationRecord
 	def interactions
 		comments + upvotes
 	end
+
+	def num_upvotes
+		upvotes.length
+	end
 	
 	def author_name
 		author.name

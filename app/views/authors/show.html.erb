@@ -1,0 +1,9 @@
+<h1><%= @author.name%></h1>
+
+<p><%= @author.bio%></p>
+
+
+<h2>List of Published Works:</h2>
+<% @author.resources.each do |resource|%>
+	<%= link_to resource.title, resource_path(resource) %>  
+<% end %>
