@@ -1,0 +1,26 @@
+<div>
+    <h1><%= @topic.name %></h1>
+    <% if @topic.description %>
+    <p><%= @topic.description %></p>
+    <% end %>
+</div>
+
+<div>
+    <div>Top Resources</div>
+    <ol>
+        <% @top_resources.each do |resource| %>
+        <li><%= link_to resource.title, resource_path(resource) %> <i>by <%= resource.author_name %></i></li>
+        <% end %>
+    </ol>
+</div>
+
+<div>
+    <div>All Resources</div>
+    <ul>
+        <% @topic.resources.each do |resource| %>
+        <li><%= link_to resource.title, resource_path(resource) %> <i>by <%= resource.author_name %></i></li>
+        <% end %>
+    </ul>
+</div>
+
+<div><%= link_to "Explore Topics", topics_path %></div>
