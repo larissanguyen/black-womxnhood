@@ -11,6 +11,10 @@ class TopicsController < ApplicationController
 	end
 	
 	private
+	def topics_params
+		params.require(:resource).permit(:nsme, :description)
+	end
+
 	def current_topic
 		@topic = Topic.find(params[:id])
 	end

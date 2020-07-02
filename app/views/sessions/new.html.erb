@@ -1,0 +1,21 @@
+<h1>Users Login Form</h1>
+
+<%= form_with url: "/login", method: "post" do |f| %>
+
+<% if flash[:errors] %>
+    <ul>
+        <% flash[:errors].each do |error| %>
+            <li style="color: red"> <%= error %> </li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= f.label :username %>
+<%= f.text_field :username %>
+
+<%= f.label :password %>
+<%= f.password_field :password %>
+
+<%= f.submit "Login"%>
+
+<% end %>
