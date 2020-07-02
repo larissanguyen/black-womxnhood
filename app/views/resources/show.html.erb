@@ -1,0 +1,9 @@
+<h1><% @resource.title%></h1>
+
+<% link_to @resource.author.name, author_path(@resource.author) %>
+
+
+Topics:
+<% @resource.topics.each do |topic|%>
+	<% link_to topic.name, topic_path(topic) %>  
+<% end %>
