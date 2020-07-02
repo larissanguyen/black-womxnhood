@@ -8,7 +8,7 @@ class AuthorsController < ApplicationController
 	end
 	
 	private
-	def current_resource
+	def current_author
 		@author = Author.find(params[:id])
 	end
 end
