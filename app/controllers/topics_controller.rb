@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
 	before_action :current_topic, only: [:show]
-	skip_before_action :authenticated, only: [:show]
+	skip_before_action :authenticated, only: [:show, :index]
 
 	def index
 		@topics = Topic.all

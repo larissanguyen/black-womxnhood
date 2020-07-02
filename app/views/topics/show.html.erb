@@ -9,7 +9,7 @@
     <div>Top Resources</div>
     <ol>
         <% @top_resources.each do |resource| %>
-        <li><%= resource.title %> <i>by <%= resource.author_name %></i></li>
+        <li><%= link_to resource.title, resource_path(resource) %> <i>by <%= resource.author_name %></i></li>
         <% end %>
     </ol>
 </div>
@@ -18,7 +18,9 @@
     <div>All Resources</div>
     <ul>
         <% @topic.resources.each do |resource| %>
-        <li><%= resource.title %> <i>by <%= resource.author_name %></i></li>
+        <li><%= link_to resource.title, resource_path(resource) %> <i>by <%= resource.author_name %></i></li>
         <% end %>
     </ul>
 </div>
+
+<div><%= link_to "Explore Topics", topics_path %></div>
