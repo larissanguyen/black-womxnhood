@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_action :current_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticated, only: [:new, :create]
   
   def new
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     if  @user.valid?
       @user.save
-      redirect_to @user
+      redirect_to user_path(@user)
     else
       redirect_to "/signup"
     end
@@ -19,10 +19,33 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    # test_user
+    @fav_topics = @user.fav_topics
+    @resources = @user.all_resources
+  end
+  
+  def edit
+  end
+  
+  def update
+  
+  end
+  
+  def destroy
+    # test_user
+    @user.delete
+    redirect_to "/signup"
   end
 
   private
+  
+  def test_user
+    @user = User.find(params[:id])
+  end
+  
+  def current_user
+    @user = User.find(session[:user_id])
+  end
 
   def user_params
     params.permit(:username, :password, :password_confirmation)

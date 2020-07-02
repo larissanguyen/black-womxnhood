@@ -12,6 +12,8 @@ class ResourcesController < ApplicationController
 
 	def new
 		@resource = Resource.new
+		@topics = Topic.all
+		@authors = Author.all
 	end
 
 	def create
