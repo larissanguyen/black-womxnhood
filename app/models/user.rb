@@ -4,7 +4,7 @@ class User < ApplicationRecord
 	has_many :commented_resources, through: :comments, source: :resource
 	has_many :upvoted_resources, through: :upvotes, source: :resource
 
-	# has_secure_password
+	has_secure_password
 	
 	def add_comment(resource, content)
 		Comment.create(resource: resource, user: self, content: content)
