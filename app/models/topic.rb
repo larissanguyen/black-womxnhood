@@ -9,4 +9,8 @@ class Topic < ApplicationRecord
 	def resources_sorted_by_interactions
 		resources.sort_by{|r| r.interaction_count}
 	end
+	
+	def resource_count
+		resources.count
+	end
 end
