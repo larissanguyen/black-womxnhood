@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
     if  @user.valid?
       @user.save
+      session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
       redirect_to "/signup"
@@ -39,9 +40,9 @@ class UsersController < ApplicationController
 
   private
   
-  def test_user
-    @user = User.find(params[:id])
-  end
+  # def test_user
+  #   @user = User.find(params[:id])
+  # end
   
   def current_user
     @user = User.find(session[:user_id])

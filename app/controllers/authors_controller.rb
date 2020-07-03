@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
 	before_action :current_author, only: [:show]
-	skip_before_action  :authenticated
+	# skip_before_action  :authenticated
 
 	def index
 		@authors = Author.all
