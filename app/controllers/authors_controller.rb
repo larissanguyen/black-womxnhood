@@ -1,5 +1,6 @@
 class AuthorsController < ApplicationController
 	before_action :current_author, only: [:show]
+	before_action :current_user
 	# skip_before_action  :authenticated
 
 	def index
@@ -32,5 +33,9 @@ class AuthorsController < ApplicationController
 
 	def current_author
 		@author = Author.find(params[:id])
+	end
+	
+	def current_user
+		@user = User.find(session[:user_id])
 	end
 end

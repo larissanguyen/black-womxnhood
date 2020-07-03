@@ -1,3 +1,6 @@
+<%= link_to "Explore Resources", resources_path %>
+<%= link_to "My Account", user_path(@user) %>
+
 <% if flash[:errors] %>
     <ul>
         <% flash[:errors].each do |error| %>

@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+	before_action :current_user
 	before_action :current_topic, only: [:show]
 	# skip_before_action :authenticated, only: [:show, :index]
 
@@ -33,5 +34,9 @@ class TopicsController < ApplicationController
 
 	def current_topic
 		@topic = Topic.find(params[:id])
+	end
+	
+	def current_user
+		@user = User.find(session[:user_id])
 	end
 end
