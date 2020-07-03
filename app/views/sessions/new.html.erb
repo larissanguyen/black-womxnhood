@@ -1,14 +1,13 @@
 <h1>Users Login Form</h1>
+<% if flash[:message] %>
+    
+     <p style="color: red"> <%= flash[:message] %> </p>
+    
+<% end %>
 
 <%= form_with url: "/login", method: "post" do |f| %>
 
-<% if flash[:errors] %>
-    <ul>
-        <% flash[:errors].each do |error| %>
-            <li style="color: red"> <%= error %> </li>
-        <% end %>
-    </ul>
-<% end %>
+
 
 <%= f.label :name %>
 <%= f.text_field :name %>
