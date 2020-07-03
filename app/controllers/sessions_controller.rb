@@ -8,23 +8,20 @@ class SessionsController < ApplicationController
 
     def create
         @user = User.find_by(name: params[:name])
-        # byebug
+
         if valid_login?
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         elsif !user_exist?
             flash[:message] = "No user found with that name"
-            # byebug
             redirect_to "/login"
         elsif !correct_password?
             
             flash[:message] = "Incorrect password"
-            # byebug
             redirect_to "/login"
         else
            
             flash[:message] = "Sorry, unknown error"
-            # byebug
             redirect_to "/login"
         end
     end

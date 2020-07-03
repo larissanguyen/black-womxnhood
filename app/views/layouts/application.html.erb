@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BlackWomxnhood</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= content_for?(:title) ? yield(:title) : "Black Womxnhood" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "A Wiki on Different Resources on Black Womxnhood" %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +12,9 @@
   </head>
 
   <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
     <%= yield %>
   </body>
 </html>
