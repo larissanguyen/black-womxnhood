@@ -1,5 +1,9 @@
 <h1>Edit Profile</h1>
 
+<% if flash[:message] %>
+    <%= flash[:message] %>
+<% end %>
+
 <%= form_with model: @user do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>

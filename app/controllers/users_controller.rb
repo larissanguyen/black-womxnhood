@@ -29,7 +29,14 @@ class UsersController < ApplicationController
   end
   
   def update
-  
+    @user.assign_attributes(user_params)
+    if @user.valid?
+      @user.save
+      redirect_to user_path(@user)
+    else
+      flash[:message] = "Sorry, invalid inputs."
+      redirect_to edit_user_path(@user)
+    end
   end
   
   def destroy
@@ -49,6 +56,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.permit(:name, :bio, :password, :password_confirmation)
+    params.require(:user).permit(:name, :bio, :password, :password_confirmation)
   end
 end
