@@ -3,9 +3,7 @@ Rails.application.routes.draw do
 	resources :authors, only: [:index, :show, :new, :create]
 	resources :topics, only: [:index, :show, :new, :create]
 	resources :comments, only: [:new, :create]
-	# resources :comments, only: [:new, :create]
 	resources :users, only: [:show, :edit, :update, :destroy]
-
 
 	get "/signup", to: "users#new"
 	post "/signup", to: "users#create"
