@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :current_user, only: [:show, :edit, :update, :destroy]
+  before_action :current_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticated, only: [:new, :create]
   
   def new
@@ -44,9 +44,9 @@ class UsersController < ApplicationController
   #   @user = User.find(params[:id])
   # end
   
-  # def current_user
-  #   @user = User.find(session[:user_id])
-  # end
+  def current_user
+    @user = User.find(session[:user_id])
+  end
 
   def user_params
     params.permit(:name, :bio, :password, :password_confirmation)
