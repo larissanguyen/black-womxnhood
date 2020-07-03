@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
 	before_action :current_topic, only: [:show]
-	skip_before_action :authenticated, only: [:show, :index]
+	skip_before_action :authenticated
 
 	def index
 		@topics = Topic.all
@@ -28,7 +28,7 @@ class TopicsController < ApplicationController
 	
 	private
 	def topics_params
-		params.require(:resource).permit(:name, :description)
+		params.require(:topic).permit(:name, :description)
 	end
 
 	def current_topic

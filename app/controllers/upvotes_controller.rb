@@ -6,13 +6,18 @@ class UpvotesController < ApplicationController
 	end
 
 	def create
-		@upvote = Upvote.new(upvote_params)
+		@upvote = Upvote.new(upvotes_params)
 
 	    if @upvote.valid?
 	      @upvote.save
 	    else
-	      redirect_to "/resource/new"
+	      redirect_to resource_path(@upvote.resource)
 	    end
+	end
+
+	private
+	def upvotes_params
+		params.permit(:resource_id, :user_id)
 	end
 	
 end

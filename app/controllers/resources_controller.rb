@@ -7,6 +7,7 @@ class ResourcesController < ApplicationController
 	end
 
 	def show
+		@upvote = Upvote.new
 	end
 
 	def new
@@ -20,22 +21,6 @@ class ResourcesController < ApplicationController
 
 	def create
 		@resource = Resource.new(resource_params)
-
-		#check if user is writing dog's name or not
-        unless params[:resource][:topic][:name].empty? 
-            topic = Topic.create(topics_params) # calling strongs params
-        end
-
-        unless params[:resource][:author][:name].empty? 
-            author = Author.create(author_params) # calling strongs params
-            byebug
-            @resource.author_id = author.id
-        end
-
-        unless params[:resource][:comment][:content].empty? 
-            comment = Comment.create(comment_params) # calling strongs params
-            comment.resource_id = @resource.id
-        end
 
 	    if @resource.valid?
 	      @resource.save
@@ -52,26 +37,8 @@ class ResourcesController < ApplicationController
 	def resource_params
 		params.require(:resource).permit(:title, 
 										 :author_id, :date_published, 
-										 {:author => [:name, :bio]}, 
-										 :topic_ids, 
-										 {:topic => [:name]}, 
-										 {:comment => [:content]})
-	end
-
-	def topics_params
-		params.require(:resource).permit({:topic => [:name]})[:topic]
-	end
-
-	def author_params
-		params.require(:resource).permit(:author_id, {:author => [:name, :bio]})[:name]
-	end
-
-	def upvote_params
-		params.require(:resource).permit(:user_id, :resource_id)
-	end
-
-	def comment_params
-		params.require(:resource).permit({:comment => [:content]})[:comment]
+										 :author, 
+										 :topic_ids)
 	end
 
 	def current_resource

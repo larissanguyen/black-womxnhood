@@ -1,13 +1,14 @@
+<h1>New Resource</h1>
+
 <%= form_for @resource do |f| %>
 
-<%= f.label :title %>
+<h4><%= f.label :title %></h4>
 <%= f.text_field :title %>
 <br><br>
 
 <h4> <%= f.label :author %> <br></h4>
-	<%= f.collection_select :author_id, @authors, :id, :name %> <br>
-	If the author isn't in the list, add them to the list!
-	<%= button_to "New", new_author_path %>
+<%= f.collection_select :author_id, @authors, :id, :name %> <br>
+<%= link_to "If the author isn't in the list, add them to the list!", new_author_path %>
 <br><br>
 
 <h4>
@@ -16,9 +17,8 @@
 </h4> 
 	
 
-<%= f.collection_check_boxes :topic_ids, @topics, :id, :name %>
-If the topic isn't in the list, add them to the list!
-<%= button_to "New", new_topic_path %>
+<%= f.collection_check_boxes :topic_ids, @topics, :id, :name %> <br>
+<%= link_to "If the topic isn't in the list, add it to the list! ", new_topic_path %>
 <br><br>
 
 <%= f.submit %>
