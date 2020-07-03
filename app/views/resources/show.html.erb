@@ -6,10 +6,9 @@
 	</svg>
 	<%= @resource.num_upvotes %>
 
-	<%= form_for @upvote do |f| %>
-		<% params[:resource_id] = @resource.id  %>
-		<% params[:user_id] = session[:current_user_id] %>
-
+	<%= form_with model: @upvote do |f| %>
+		<%= f.hidden_field :resource_id, :value => @resource.id %>
+		<%= f.hidden_field :user_id, :value => @user.id %>
 	  	<%= f.submit "upvote" %>
 	<% end %>
 </div>
@@ -31,11 +30,24 @@
 
 <div>
 	<h3>Comments: </h3>
+	<%= form_with model: @comment do |f| %>
+
+		<%= f.hidden_field :resource_id, :value => @resource.id %>
+		<%= f.hidden_field :user_id, :value => @user.id %>
+		
+		<%= f.label :content %>
+		<%= f.text_field :content %>
+		
+		<%= f.submit %>
+	<% end %>
+	
 	<% @resource.comments.each do |comment| %>
 		<h5> <%= comment.user.name %> | <%= comment.updated_at %> </h5> 
 		<p> <%= comment.content %></p>
 	<% end %>	
 </div>
+
+
 
 
 

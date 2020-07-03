@@ -10,14 +10,14 @@ class UpvotesController < ApplicationController
 
 	    if @upvote.valid?
 	      @upvote.save
-	    else
-	      redirect_to resource_path(@upvote.resource)
 	    end
+	    
+	    redirect_to resource_path(@upvote.resource)
 	end
 
 	private
 	def upvotes_params
-		params.permit(:resource_id, :user_id)
+		params.require(:upvote).permit(:resource_id, :user_id)
 	end
 	
 end

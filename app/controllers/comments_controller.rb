@@ -11,16 +11,16 @@ class CommentsController < ApplicationController
 
 	    if @comment.valid?
 	    	@comment.save
-	    	redirect_to new_resource_path
 	    else
 	    	flash[:errors] = @comment.errors.full_messages
-	    	redirect_to new_comment_path
 	    end
+	    
+	    redirect_to resource_path(@comment.resource)
 	end
 	
 	private
 	def comment_params
 		params.require(:comment).permit(:content, :resource_id, :user_id) # FIGURE OUT HOW TO INCLUDE USER_ID
-		params[:user_id] = session[:current_user_id]
+		# params[:user_id] = session[:current_user_id]
 	end
 end

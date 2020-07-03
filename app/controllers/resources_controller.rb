@@ -1,5 +1,6 @@
 class ResourcesController < ApplicationController
 	before_action :current_resource, only: [:show]
+	before_action :current_user
 	# skip_before_action  :authenticated
 
 	def index
@@ -8,6 +9,7 @@ class ResourcesController < ApplicationController
 
 	def show
 		@upvote = Upvote.new
+		@comment = Comment.new
 	end
 
 	def new
@@ -43,6 +45,10 @@ class ResourcesController < ApplicationController
 
 	def current_resource
 		@resource = Resource.find(params[:id])
+	end
+	
+	def current_user
+		@user = User.find(session[:user_id])
 	end
 	
 end
