@@ -2,19 +2,44 @@
 
 <%= f.label :title %>
 <%= f.text_field :title %>
-<br>
-<br>
+<br><br>
 
-<%= f.label :author %>
-<%= f.collection_select :author_id, @authors, :id, :name %>
-<br>
-<br>
+<h4> <%= f.label :author %> <br></h4>
+	<%= f.collection_select :author_id, @authors, :id, :name %>
+		<%= f.fields_for @author do |af| %>
+	        <% af.label :author %>
+	        <%= af.text_field :name%>
+	    <% end %>
 
-<%= f.label :topics %>
+<br><br>
+
+<h4>
+	<%= f.label :topics %>
+<br>
+</h4> 
 <%= f.collection_check_boxes :topic_ids, @topics, :id, :name %>
-<br>
-<br>
+	
+	<br><br>
+	New topics: 
+	<% (1..3).map do %>
+		<%= f.fields_for @topic do |af| %>
+	        <%= af.label :name %>
+	        <%= af.text_field :name%>
+	    <% end %>
+    <% end %>
+<br><br>
 
+<h4>
+	<%= f.label "New Comment:" %>
+<br>
+</h4> 
+
+<%= f.fields_for @comment do |af| %>
+    <%= af.label :content %>
+    <%= af.text_field :content%>
+<% end %>
+
+<br>
 <%= f.submit %>
 
 <% end %>

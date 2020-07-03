@@ -1,0 +1,22 @@
+<% if flash[:errors] %>
+    <ul>
+        <% flash[:errors].each do |error| %>
+            <li style="color: red"> <%= error %> </li>
+        <% end %>
+    </ul>
+<% end %> 
+
+<h1>New Comment:</h1>
+
+<%= form_for @comment do |f| %>
+
+<%= f.label :resource %>
+<%= f.collection_select :resource_id, @resources, :id, :title %>
+<br>
+
+<%= f.label :content %>
+<%= f.text_field :content %>
+
+<%= f.submit %>
+
+<% end %>
