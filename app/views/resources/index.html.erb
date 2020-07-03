@@ -3,7 +3,7 @@
 <ul>
 	<% @resources.each do |resource| %>
 		<li> <%= link_to resource.title, "/resources/#{resource.id}" %> by 
-			 <%= resource.author.name %>
+			 <%= link_to resource.author.name, "/authors/#{resource.author.id}"%>
 			 <% resource.topics.each do |topic| %>
 			 	<%= topic.name %>
 			 <% end %>

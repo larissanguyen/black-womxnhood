@@ -3,6 +3,7 @@ class AuthorsController < ApplicationController
 	skip_before_action  :authenticated
 
 	def index
+		@authors = Author.all
 	end
 
 	def show
