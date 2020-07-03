@@ -1,6 +1,6 @@
 class ResourcesController < ApplicationController
 	before_action :current_resource, only: [:show]
-	skip_before_action  :authenticated
+	# skip_before_action  :authenticated
 
 	def index
 		@resources = Resource.all
